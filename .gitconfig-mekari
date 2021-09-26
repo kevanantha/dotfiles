@@ -1,0 +1,14 @@
+[user]
+	name = I Putu Kevin Anantha Vijaya
+	email = kevin.anantha@mekari.com
+	signingkey = 8ECFE9A51F8E953D
+[core]
+	editor = nvim
+[commit]
+	gpgsign = true
+[color]
+	ui = true
+[init]
+  defaultBranch = master
+[pull]
+  rebase = false

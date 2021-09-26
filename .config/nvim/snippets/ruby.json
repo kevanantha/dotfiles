@@ -1,0 +1,26 @@
+{
+  "binding pry": {
+    "prefix": ["bp"],
+    "body": [
+      "binding.pry"
+    ],
+    "description": "binding.pry debug"
+  },
+  "class": {
+    "prefix": ["cls"],
+    "body": [
+      "class ${1:ClassName}",
+      "end"
+    ],
+    "description": "Class"
+  },
+  "module": {
+    "prefix": ["mod"],
+    "body": [
+      "module ${1:Module Name}",
+      "end"
+    ],
+    "description": "Module"
+  }
+}
+

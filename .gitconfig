@@ -1,0 +1,23 @@
+[user]
+	name = Kevin Anantha
+	email = kevanantha@evilfactory.id
+	; email = jw71noyk6@relay.firefox.com
+	signingkey = B5710FCAF4097DA9
+[core]
+	editor = nvim
+  pager = delta --color-only --plus-color="#012800" --minus-color="#340001" --theme=Dracula --width=190 | bat --theme=Dracula
+[interactive]
+  diffFilter = delta --color-only
+[commit]
+  gpgsign = true
+[color]
+  ui = true
+[init]
+  defaultBranch = main
+[pull]
+	rebase = true
+
+[includeIf "gitdir:~/w/"]
+  path = ~/.gitconfig-mekari
+[url "git@bitbucket.org:"]
+  insteadOf = https://bitbucket.org
