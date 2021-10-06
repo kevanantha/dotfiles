@@ -53,10 +53,5 @@ windows:
       panes:
         - npm run watch
         - wd tdd && dc up -d nginx mariadb redis
-  - jest:
-  - test: cd vue/tests/
-  - vue:
-  - vue-ex:
-  - views: cd views/
-  - controllers: cd controllers/
   - root:
+  - test:

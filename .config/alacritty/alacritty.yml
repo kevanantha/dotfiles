@@ -2,7 +2,7 @@ env:
   TERM: alacritty
 
 window:
-  opacity: 0.96
+  opacity: 1
   dimensions:
     columns: 0
     lines: 0
@@ -13,13 +13,13 @@ window:
 
   padding:
     x: 0
-    y: 25
+    y: 0
 
   dynamic_title: false
   dynamic_padding: true
   startup_mode: Maximized 
   title: Alacritty
-  decorations: transparent 
+  decorations: buttonless
 
   class:
     instance: Alacritty
@@ -42,15 +42,18 @@ font:
     family: JetBrainsMono Nerd Font
     style: Bold Italic
 
-  size: 12.0
+  size: 13.0
+
+  class_name: UnitTester
+  modules: asd
 
   offset:
     x: 0
-    y: 0
+    y: 5
 
   glyph_offset:
     x: 0
-    y: 0
+    y: 5
 
   use_thin_strokes: true
 
@@ -60,58 +63,59 @@ schemes:
   tokyo-night: &tokyo-night
     # Default colors
     primary:
-      background: '0x1a1b26'
-      foreground: '0xa9b1d6'
+      # background: '0x1a1b26'
+      background: '#1a1b26'
+      foreground: '#a9b1d6'
 
     # Normal colors
     normal:
-      black:   '0x32344a'
-      red:     '0xf7768e'
-      green:   '0x9ece6a'
-      yellow:  '0xe0af68'
-      blue:    '0x7aa2f7'
-      magenta: '0xad8ee6'
-      cyan:    '0x449dab'
-      white:   '0x787c99'
+      black:   '#32344a'
+      red:     '#f7768e'
+      green:   '#9ece6a'
+      yellow:  '#e0af68'
+      blue:    '#7aa2f7'
+      magenta: '#ad8ee6'
+      cyan:    '#449dab'
+      white:   '#787c99'
 
     # Bright colors
     bright:
-      black:   '0x444b6a'
-      red:     '0xff7a93'
-      green:   '0xb9f27c'
-      yellow:  '0xff9e64'
-      blue:    '0x7da6ff'
-      magenta: '0xbb9af7'
-      cyan:    '0x0db9d7'
-      white:   '0xacb0d0'
+      black:   '#444b6a'
+      red:     '#ff7a93'
+      green:   '#b9f27c'
+      yellow:  '#ff9e64'
+      blue:    '#7da6ff'
+      magenta: '#bb9af7'
+      cyan:    '#0db9d7'
+      white:   '#acb0d0'
 
   tokyo-night-storm: &tokyo-night-storm
     # Default colors
     primary:
-      background: '0x24283b'
-      foreground: '0xa9b1d6'
+      background: '#24283b'
+      foreground: '#a9b1d6'
 
     # Normal colors
     normal:
-      black:   '0x32344a'
-      red:     '0xf7768e'
-      green:   '0x9ece6a'
-      yellow:  '0xe0af68'
-      blue:    '0x7aa2f7'
-      magenta: '0xad8ee6'
-      cyan:    '0x449dab'
-      white:   '0x9699a8'
+      black:   '#32344a'
+      red:     '#f7768e'
+      green:   '#9ece6a'
+      yellow:  '#e0af68'
+      blue:    '#7aa2f7'
+      magenta: '#ad8ee6'
+      cyan:    '#449dab'
+      white:   '#9699a8'
 
     # Bright colors
     bright:
-      black:   '0x444b6a'
-      red:     '0xff7a93'
-      green:   '0xb9f27c'
-      yellow:  '0xff9e64'
-      blue:    '0x7da6ff'
-      magenta: '0xbb9af7'
-      cyan:    '0x0db9d7'
-      white:   '0xacb0d0'
+      black:   '#444b6a'
+      red:     '#ff7a93'
+      green:   '#b9f27c'
+      yellow:  '#ff9e64'
+      blue:    '#7da6ff'
+      magenta: '#bb9af7'
+      cyan:    '#0db9d7'
+      white:   '#acb0d0'
 
 
   gruvbox: &gruvbox
@@ -145,36 +149,6 @@ schemes:
       magenta: '#d3869b'
       cyan:    '#8ec07c'
       white:   '#ebdbb2'
-
-eunoia: &eunoia
-  # Default colors
-  primary:
-    background: '#151326'
-    foreground: '#dedbd6'
-
-  cursor:
-    text: '#151326'
-    cursor: '#dedbd6'
-
-  normal:
-    black:   '#151326'
-    red:     '#FF496F'
-    green:   '#44D695'
-    yellow:  '#F1DC49'
-    blue:    '#6391F4'
-    magenta: '#E36DD4'
-    cyan:    '#58CDFF'
-    white:   '#DEDBD6'
-
-  bright:
-    black:   '#2C2941'
-    red:     '#FF4356'
-    green:   '#2bff99'
-    yellow:  '#FFB55E'
-    blue:    '#6370F4'
-    magenta: '#DA6DE3'
-    cyan:    '#58CDFF'
-    white:   '#efefef'
 
 colors: *tokyo-night
 
@@ -216,8 +190,8 @@ mouse:
 key_bindings:
   # not sure about this thing
   - { key: Space,      mods: Control,             chars: "\xa0" }
-  - { key: K,          mods: Alt,     mode: ~Alt, action: ScrollLineUp,  }
-  - { key: J,          mods: Alt,     mode: ~Alt, action: ScrollLineDown }
+  # - { key: K,          mods: Alt,     mode: ~Alt, action: ScrollLineUp,  }
+  # - { key: J,          mods: Alt,     mode: ~Alt, action: ScrollLineDown }
   - { key: U,          mods: Alt,     mode: ~Alt, action: ScrollPageUp   }
   - { key: D,          mods: Alt,     mode: ~Alt, action: ScrollPageDown }
   - { key: V,          mods: Alt,                 action: Paste          }
@@ -225,3 +199,4 @@ key_bindings:
   - { key: K,          mods: Alt|Shift,           action: IncreaseFontSize }
   - { key: J,          mods: Alt|Shift,           action: DecreaseFontSize }
   - { key: N,          mods: Command,             action: SpawnNewInstance }
+  - { key: F,          mods: Command|Shift,       action: ToggleFullscreen }

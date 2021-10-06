@@ -4,10 +4,30 @@
 	; email = jw71noyk6@relay.firefox.com
 	signingkey = B5710FCAF4097DA9
 [core]
-	editor = nvim
-  pager = delta --color-only --plus-color="#012800" --minus-color="#340001" --theme=Dracula --width=190 | bat --theme=Dracula
+	editor = lvim
+  ; pager = delta --color-only --plus-color="#012800" --minus-color="#340001" --theme=Dracula --width=190 | bat
+  ; pager = delta | bat
+
+[pager]
+  diff = delta --theme=Dracula | bat --theme=Dracula
+  log = delta --theme=Dracula | bat --theme=Dracula
+  reflog = delta --theme=Dracula | bat --theme=Dracula
+  show =delta --theme=Dracula | bat --theme=Dracula
+
+[delta]
+  line-numbers = true
+  plus-style = "syntax #012800"
+  ; minus-style = "syntax #340001"
+  minus-style = red bold ul "#ffeeee"
+  syntax-theme = Dracula
+  navigate = true
+
 [interactive]
   diffFilter = delta --color-only
+
+; [interactive]
+;   ; diffFilter = delta --color-only
+;   diffFilter = delta
 [commit]
   gpgsign = true
 [color]

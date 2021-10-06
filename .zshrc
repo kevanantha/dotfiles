@@ -104,7 +104,7 @@ alias zshconfig="lvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias vimrc="nvim ~/.vimrc"
 alias vimconfig="cd ~/.config/nvim && nvim ~/.config/nvim"
-alias v="nvim"
+alias v="lvim"
 alias c='clear'
 alias gacp='echo "What is the commit message mate?" && read MSG && git add . && git commit -m "$MSG" && ggp'
 alias pobsi='wd obsi && git add . && git commit -m "docs: update" && ggp'
@@ -235,7 +235,7 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 
 #### FIG ENV VARIABLES ####
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+# [ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
 #### END FIG ENV VARIABLES ####
 
 export PATH="/Users/kevin/.local/bin:$PATH"
