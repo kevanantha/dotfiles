@@ -2,7 +2,7 @@
 	name = Kevin Anantha
 	email = kevanantha@evilfactory.id
 	; email = jw71noyk6@relay.firefox.com
-	signingkey = B5710FCAF4097DA9
+  signingkey = 7177A8BB25878050
 [core]
 	editor = lvim
   ; pager = delta --color-only --plus-color="#012800" --minus-color="#340001" --theme=Dracula --width=190 | bat

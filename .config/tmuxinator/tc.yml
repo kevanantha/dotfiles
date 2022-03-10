@@ -51,7 +51,7 @@ windows:
   - server:
       layout: even-vertical
       panes:
-        - npm run watch
+        - yarn && yarn watch
         - wd tdd && dc up -d nginx mariadb redis
   - root:
   - test:
