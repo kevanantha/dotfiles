@@ -57,12 +57,16 @@ lvim.builtin.which_key.mappings["t"] = {
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.dashboard.active = true
+lvim.builtin.alpha.mode = 'dashboard'
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.bufferline.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
+
+lvim.builtin.cmp.completion.keyword_length = 2
+-- lvim.builtin.telescope.defaults.layout_config.width = 0.95
+-- lvim.builtin.telescope.defaults.layout_config.preview_cutoff = 75
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -179,6 +183,14 @@ linters.setup {
   },
 }
 
+local code_actions = require "lvim.lsp.null-ls.code_actions"
+code_actions.setup {
+  {
+    exe = "eslint",
+    filetypes = { "javascript", "typescript", "typescriptreact", "vue" },
+  },
+}
+
 -- Additional Plugins
 lvim.plugins = {
     -- {"folke/tokyonight.nvim"},
@@ -207,7 +219,7 @@ lvim.plugins = {
     },
     {"terryma/vim-multiple-cursors"},
     {
-      "blackCauldron7/surround.nvim",
+      "ur4ltz/surround.nvim",
       config = function()
         require"surround".setup {mappings_style = "surround"}
       end
