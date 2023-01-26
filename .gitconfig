@@ -1,25 +1,29 @@
 [user]
-	name = Kevin Anantha
-	email = kevanantha@evilfactory.id
+	name = Kevin Anantha (Kevan)
+	email = kevin.anantha@gmail.com
 	; email = jw71noyk6@relay.firefox.com
-  signingkey = 7177A8BB25878050
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDqSqWaMcRrZz8yOfGPoeoocYjXtziI0Zakwc06Kzgy2pECKujVeFkeiCPbLAAlrqmmdjYNyDc2vdi4BvZEb413+H10RA6ozlEM0hlg1tqM8FCZchqLAInmw5Noyci5uZ4dDNlNUbjGy9bBKuZaUs/0qkMVheLLxsxzb3LTTxyC9YNdGdA6yUdN/VaZgXLofkh+yq//y1V48EU7FDWUgf3HxQqoNTanwQL/b13GGj1WDAsFCCbcfSDDAKv5WuBfiBpW9N/wHtGWPDwj305RN2qfsFdPUgvUwYhZuKranVjX47052JMOOkVQuj4aA/9IkRiHGGxfCfbf4ZW5n/ko86pBTIFzZOCjhGl0KJuPKD9WBaOxLLPgW4O121hX2s3nO2984ruJOdehXSNGDuZv0JW1d/A/1AehrjhHSv3UPSzbdpNsv7G8mkycYIWAruQ98ToI36cYJpV3rs6V/2i3eYzmskxYtFggglUIB2FGMkdJVYjmbdVnfAkPybTw1kBAIhyfH1wkXYUkxekfWC3eCQugzs130VNU+nK5wKVRRDK2Db3GcyCNAxcQG8UGHEWnFrDKZRpy03wyGvhZR1raCrHpgmFYtZZOllytZ9a04Gi80FmqBSkQbIWUlcI0x57SPhTKueGmsWQ3pIRn69LpO+2ABjsHQtW+3QtXf1/E05Yv8Q==
 [core]
 	editor = lvim
   ; pager = delta --color-only --plus-color="#012800" --minus-color="#340001" --theme=Dracula --width=190 | bat
   ; pager = delta | bat
 
 [pager]
-  diff = delta --theme=Dracula | bat --theme=Dracula
-  log = delta --theme=Dracula | bat --theme=Dracula
-  reflog = delta --theme=Dracula | bat --theme=Dracula
-  show =delta --theme=Dracula | bat --theme=Dracula
+  ; diff = delta --theme=Dracula | bat --theme=Dracula
+  diff = delta | bat
+  ; log = delta --theme=Dracula | bat --theme=Dracula
+  log = delta | bat
+  ; reflog = delta --theme=Dracula | bat --theme=Dracula
+  reflog = delta | bat
+  ; show =delta --theme=Dracula | bat --theme=Dracula
+  show =delta | bat
 
 [delta]
   line-numbers = true
   plus-style = "syntax #012800"
   ; minus-style = "syntax #340001"
   minus-style = red bold ul "#ffeeee"
-  syntax-theme = Dracula
+  ; syntax-theme = Dracula
   navigate = true
 
 [interactive]
@@ -41,3 +45,8 @@
   path = ~/.gitconfig-mekari
 [url "git@bitbucket.org:"]
   insteadOf = https://bitbucket.org
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	allowedSignersFile = /Users/mekari/.ssh/allowed_signers

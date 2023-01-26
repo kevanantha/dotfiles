@@ -2,14 +2,23 @@
 	name = I Putu Kevin Anantha Vijaya
 	email = kevin.anantha@mekari.com
 	; signingkey = 8ECFE9A51F8E953D
-  signingkey = 82253A81FDB5252E
+  ; signingkey = 82253A81FDB5252E
+  signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDC1gjrsUgfhYBZygJbt6hRXxd8jG4h+dZDHC/KZwzc9UQRi7MilFVZSvXehmfQCGx0cGW7LzY3COCtDvCD1Y9zBnCX/1tc8SUfMqadoTiUlQAyqHUTn/CpdysH2PL2MiA+ecE2K+4YXt278T9D1jR422kOg3G8zG9HcjADSxPUjAZmN1xVBa0ZE+VQHuHIJdOGBJSrncqNb+m51Ff504x+vyqzXgO1qrOeqki8wBqKSLJAQwkKaUgqQ5wMrwkbQVMmWtyqQhwineiCWdbnG2pObrkoM3skssIeHwhPKWnrz9IkuDt0vGuhznT2QKid32vm5kRpCBpQkhvlCaqq/3yecvsTYgFsZV1sc3SpCDV1YhlQsHfNZ0IxC6Se04IRW3hwyKoTWeMbjPY3Nep/rKNj1KOgujo7a6RN6ELUgUdGhkiFjHwdxT4+/9me1Q4hzNN6iouvb3mJDrfdu07posr0wikDCBSMvnLpXzn1pSzSLsoboBmgNwjNUr4uGWGM0VPtpjBH5lic8bGGAkw286jL9t/EL59jswsqrYXxhwV0HLtTSwi6TBbaGUXFgVSnLdEN/FHpCo6MQlvLRF411c3SOenBhAxfPdiWE4UfOS+muggTSppPEEvcsdcahVvJ/1wMuf7IkyqDaIpKpht3sbiFmGvkwWNGMwnsgLxMNhY0yQ==
 [core]
 	editor = lvim
-[commit]
-	gpgsign = true
+	; editor = nvim
 [color]
 	ui = true
 [init]
   defaultBranch = master
 [pull]
   rebase = false
+
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	allowedSignersFile = /Users/mekari/.ssh/allowed_signers_mekari
+[commit]
+  gpgsign = true
+

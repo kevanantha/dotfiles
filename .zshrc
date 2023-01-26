@@ -1,5 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-. "$HOME/.fig/shell/zshrc.pre.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -72,7 +72,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting yarn wd bundler npm nvm rbenv redis-cli ruby tmux docker docker-compose kubectl web-search)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting yarn wd bundler npm rbenv redis-cli ruby tmux docker docker-compose kubectl web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,6 +102,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias hm="home-manager"
+alias pn="pnpm"
 alias ld="lazydocker"
 alias tks="tmux kill-session"
 alias zshconfig="lvim ~/.zshrc"
@@ -111,6 +113,7 @@ alias vimconfig="cd ~/.config/nvim && nvim ~/.config/nvim"
 alias v="lvim"
 alias c='clear'
 alias gacp='echo "What is the commit message mate?" && read MSG && git add . && git commit -m "$MSG" && ggp'
+alias bitpr='echo "What branch?" && read MSG && open "https://bitbucket.org/mid-kelola-indonesia/talenta-core/pull-requests/new?source=$MSG&t=1" -a "Arc"'
 alias pobsi='wd obsi && git add . && git commit -m "docs: update" && ggp'
 # alias gac='echo "What is the commit message mate?" && read MSG && git add . && git commit -m "$MSG"'
 alias gac='gaa && gc'
@@ -138,12 +141,13 @@ alias d='docker'
 alias dc='docker-compose'
 alias ls='exa -l -h -F --git --color=always'
 alias cat='bat --theme=Dracula'
-alias find='fd'
+# alias find='fd'
 alias top='ytop'
 # alias gd='git diff --color | delta | cat'
-alias gm='open "https://meet.google.com/landing?authuser=1" -a "Google Chrome"'
-alias sup='open "https://meet.google.com/tzr-broj-sjg?authuser=1&hl=en" -a "Google Chrome"'
-alias supl='echo "Gimme the link mate!" && read MSG && open $MSG -a "Google Chrome"'
+# alias gm='open "https://meet.google.com/landing?authuser=1" -a "Google Chrome"'
+alias gmeet='open "https://meet.google.com/landing?authuser=1" -a "Arc"'
+alias sup='open "https://meet.google.com/tzr-broj-sjg?authuser=1&pli=1" -a "Arc"'
+alias supl='echo "Gimme the link mate!" && read MSG && open $MSG -a "Arc"'
 alias bsl='brew services list'
 alias bs='brew services'
 alias killport='echo "What port?" && read PORT && kill -9 $(lsof -ti tcp:$PORT) && echo "DONE BRO!"'
@@ -151,16 +155,12 @@ alias tx='tmuxinator'
 alias sl='pmset sleepnow'
 
 export EDITOR='lvim'
+# export EDITOR='nvim'
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 
 export PATH="$HOME/.local/bin:$PATH"
-
-# yarn
-# export PATH="$(yarn global bin):$PATH"
-# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-# export PATH=~/.yarn/bin:$PATH
-
+export PATH="$HOME/Library/Application Support/neovim/bin:$PATH"
 
 eval "$(starship init zsh)"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
@@ -170,35 +170,33 @@ export PATH="$PNPM_HOME:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# pnpm
+export PNPM_HOME="/Users/mekari/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# 1Password
+eval "$(op completion zsh)"; compdef _op op
 
-# place this after nvm initialization!
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
+# export VOLTA_HOME="$HOME/.volta"
+# export PATH="$VOLTA_HOME/bin:$PATH"
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+# fnm
+export PATH=/Users/mekari/.fnm:$PATH
+eval "`fnm env`"
+# fnm shell setup
+# https://github.com/Schniz/fnm#shell-setup
+eval "$(fnm env --use-on-cd)"
 
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# turbolift
+# export PATH=/Users/mekari/turbolift/turbolift:$PATH
+export PATH=/Users/mekari/turbolift:$PATH
+
+# Nix
+export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
 
 # Fig post block. Keep at the bottom of this file.
-. "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+eval "$(direnv hook zsh)"
+

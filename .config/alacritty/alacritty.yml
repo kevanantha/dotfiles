@@ -1,6 +1,9 @@
+---
 env:
-  TERM: alacritty
-  # TERM: xterm-256color 
+  # TERM: alacritty
+  TERM: xterm-256color
+  # TERM: screen-256color
+  # TERM: alacritty-256color
 
 window:
   opacity: 1
@@ -18,7 +21,7 @@ window:
 
   dynamic_title: false
   dynamic_padding: true
-  startup_mode: Maximized 
+  startup_mode: Maximized
   title: Alacritty
   decorations: buttonless
 
