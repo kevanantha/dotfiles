@@ -4,7 +4,7 @@
 	; email = jw71noyk6@relay.firefox.com
 	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDqSqWaMcRrZz8yOfGPoeoocYjXtziI0Zakwc06Kzgy2pECKujVeFkeiCPbLAAlrqmmdjYNyDc2vdi4BvZEb413+H10RA6ozlEM0hlg1tqM8FCZchqLAInmw5Noyci5uZ4dDNlNUbjGy9bBKuZaUs/0qkMVheLLxsxzb3LTTxyC9YNdGdA6yUdN/VaZgXLofkh+yq//y1V48EU7FDWUgf3HxQqoNTanwQL/b13GGj1WDAsFCCbcfSDDAKv5WuBfiBpW9N/wHtGWPDwj305RN2qfsFdPUgvUwYhZuKranVjX47052JMOOkVQuj4aA/9IkRiHGGxfCfbf4ZW5n/ko86pBTIFzZOCjhGl0KJuPKD9WBaOxLLPgW4O121hX2s3nO2984ruJOdehXSNGDuZv0JW1d/A/1AehrjhHSv3UPSzbdpNsv7G8mkycYIWAruQ98ToI36cYJpV3rs6V/2i3eYzmskxYtFggglUIB2FGMkdJVYjmbdVnfAkPybTw1kBAIhyfH1wkXYUkxekfWC3eCQugzs130VNU+nK5wKVRRDK2Db3GcyCNAxcQG8UGHEWnFrDKZRpy03wyGvhZR1raCrHpgmFYtZZOllytZ9a04Gi80FmqBSkQbIWUlcI0x57SPhTKueGmsWQ3pIRn69LpO+2ABjsHQtW+3QtXf1/E05Yv8Q==
 [core]
-	editor = lvim
+	editor = nvim
   ; pager = delta --color-only --plus-color="#012800" --minus-color="#340001" --theme=Dracula --width=190 | bat
   ; pager = delta | bat
 

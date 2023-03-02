@@ -53,7 +53,5 @@ windows:
       panes:
         - yarn && yarn watch
         - wd tdd && dc up -d nginx mariadb redis
-        - 
-  - pixel:
-  - root:
-  - test:
+        -
+  - code:

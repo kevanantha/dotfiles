@@ -106,11 +106,11 @@ alias hm="home-manager"
 alias pn="pnpm"
 alias ld="lazydocker"
 alias tks="tmux kill-session"
-alias zshconfig="lvim ~/.zshrc"
+alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias vimrc="nvim ~/.vimrc"
 alias vimconfig="cd ~/.config/nvim && nvim ~/.config/nvim"
-alias v="lvim"
+alias v="nvim"
 alias c='clear'
 alias gacp='echo "What is the commit message mate?" && read MSG && git add . && git commit -m "$MSG" && ggp'
 alias bitpr='echo "What branch?" && read MSG && open "https://bitbucket.org/mid-kelola-indonesia/talenta-core/pull-requests/new?source=$MSG&t=1" -a "Arc"'
@@ -153,8 +153,9 @@ alias bs='brew services'
 alias killport='echo "What port?" && read PORT && kill -9 $(lsof -ti tcp:$PORT) && echo "DONE BRO!"'
 alias tx='tmuxinator'
 alias sl='pmset sleepnow'
+alias ws='webstorm'
 
-export EDITOR='lvim'
+export EDITOR='nvim'
 # export EDITOR='nvim'
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
@@ -200,3 +201,5 @@ export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/
 
 eval "$(direnv hook zsh)"
 
+export DENO_INSTALL="/Users/mekari/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
