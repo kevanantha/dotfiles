@@ -97,4 +97,9 @@ return {
       vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
     end,
   },
+
+  {
+    "lvimuser/lsp-inlayhints.nvim",
+    enabled = false,
+  },
 }

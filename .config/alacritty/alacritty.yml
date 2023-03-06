@@ -56,15 +56,15 @@ font:
 
   offset:
     x: 0
-    # y: 2
-    y: 0
+    y: 2
+    # y: 0
 
   glyph_offset:
     x: 0
-    # y: 2
+    # y: 3
     y: 0
 
-  use_thin_strokes: true
+  use_thin_strokes: false
 
 draw_bold_text_with_bright_colors: false
 

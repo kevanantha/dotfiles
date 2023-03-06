@@ -116,9 +116,10 @@ return {
 
       return {
         options = {
-          -- theme = "auto",
-          theme = "moonfly",
+          theme = "auto",
           globalstatus = true,
+          component_separators = { left = "", right = "" },
+          section_separators = { left = "", right = "" },
           disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
         },
         sections = {
@@ -143,19 +144,60 @@ return {
             },
           },
           lualine_x = {
-            -- stylua: ignore
             {
-              function() return require("noice").api.status.command.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-              color = fg("Statement")
+              function(msg)
+                msg = msg or "LS Inactive"
+                local buf_clients = vim.lsp.get_active_clients()
+                if next(buf_clients) == nil then
+                  -- TODO: clean up this if statement
+                  if type(msg) == "boolean" or #msg == 0 then
+                    return "LS Inactive"
+                  end
+                  return msg
+                end
+                local buf_ft = vim.bo.filetype
+                local buf_client_names = {}
+                local copilot_active = false
+
+                -- add client
+                for _, client in pairs(buf_clients) do
+                  if client.name ~= "null-ls" and client.name ~= "copilot" then
+                    table.insert(buf_client_names, client.name)
+                  end
+
+                  if client.name == "copilot" then
+                    copilot_active = true
+                  end
+                end
+
+                local unique_client_names = vim.fn.uniq(buf_client_names)
+
+                local language_servers = "[" .. table.concat(unique_client_names, ", ") .. "]"
+
+                local copilot_icon = require("lazyvim.config").icons.kinds.Copilot
+
+                if copilot_active then
+                  language_servers = language_servers .. "%#SLCopilot#" .. " " .. copilot_icon .. "%*"
+                end
+
+                return language_servers
+              end,
             },
+
+
             -- stylua: ignore
-            {
-              function() return require("noice").api.status.mode.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-              color = fg("Constant") ,
-            },
-            { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = fg("Special") },
+            -- {
+            --   function() return require("noice").api.status.command.get() end,
+            --   cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+            --   color = fg("Statement")
+            -- },
+            -- stylua: ignore
+            -- {
+            --   function() return require("noice").api.status.mode.get() end,
+            --   cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+            --   color = fg("Constant") ,
+            -- },
+            -- { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = fg("Special") },
             {
               "diff",
               symbols = {
@@ -166,6 +208,14 @@ return {
             },
           },
           lualine_y = {
+            {
+              function()
+                local icon = ""
+                local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
+                return icon .. " " .. shiftwidth
+              end,
+              padding = 1,
+            },
             { "progress", separator = " ", padding = { left = 1, right = 0 } },
             { "location", padding = { left = 0, right = 1 } },
           },
@@ -175,7 +225,8 @@ return {
             end,
           },
         },
-        extensions = { "neo-tree" },
+        -- extensions = { "neo-tree" },
+        -- extensions = { "NvimTree" },
       }
     end,
   },
