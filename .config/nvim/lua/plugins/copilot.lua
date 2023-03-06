@@ -1,26 +1,27 @@
 return {
+  -- Use lua/lazyvim/plugins/extras/coding/copilot.lua (https://github.com/LazyVim/LazyVim/commit/099fd48844c1d5ec49dc7f83162112ba70a26ad5)
   -- copilot
-  {
-    "zbirenbaum/copilot.lua",
-    -- opts = function()
-    --   require("copilot").setup({
-    --     suggestion = { enabled = false },
-    --     panel = { enabled = false },
-    --   })
-    -- end,
-    event = "InsertEnter",
-    init = function()
-      vim.g.copilot_no_tab_map = true
-    end,
-    keys = {
-      { "<C-CR>", "copilot#Accept('\\<CR>')", expr = true, mode = "i", desc = "Accept copilot suggestion" },
-    },
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    dependencies = { "zbirenbaum/copilot.lua" },
-    opts = function()
-      require("copilot").setup({})
-    end,
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   enabled = true,
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   opts = {
+  --     suggestion = { enabled = false },
+  --     panel = { enabled = false },
+  --   },
+  -- init = function()
+  --   vim.g.copilot_no_tab_map = true
+  -- end,
+  -- keys = {
+  --   { "<C-CR>", "copilot#Accept('\\<CR>')", expr = true, mode = "i", desc = "Accept copilot suggestion" },
+  -- },
+  -- },
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   dependencies = { "zbirenbaum/copilot.lua" },
+  --   opts = function()
+  --     require("copilot").setup({})
+  --   end,
+  -- },
 }

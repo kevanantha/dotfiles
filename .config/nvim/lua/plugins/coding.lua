@@ -59,9 +59,12 @@ return {
     "smjonas/inc-rename.nvim",
     cmd = "IncRename",
     config = true,
-    opts = function()
-      vim.keymap.set("n", "<leader>rn", "<cmd>IncRename<cr>", { desc = "Incremental rename" })
-    end,
+    -- opts = function()
+    --   vim.keymap.set("n", "<leader>rn", "<cmd>IncRename<cr>", { desc = "Incremental rename" })
+    -- end,
+    -- keys = {
+    --   { "<leader>rn", "<cmd>IncRename<c>", desc = "Incremental rename" },
+    -- },
   },
 
   {
@@ -85,5 +88,13 @@ return {
     "simrat39/symbols-outline.nvim",
     keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
     config = true,
+  },
+
+  {
+    "andymass/vim-matchup",
+    event = "BufReadPost",
+    config = function()
+      vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
+    end,
   },
 }

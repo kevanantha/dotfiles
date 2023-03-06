@@ -38,6 +38,9 @@ return {
         "vue",
         "yaml",
       },
+      matchup = {
+        enable = true,
+      },
       highlight = { enable = true },
       query_linter = {
         enable = true,

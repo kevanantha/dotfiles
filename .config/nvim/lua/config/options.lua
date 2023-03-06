@@ -3,6 +3,9 @@
 -- Add any additional options here
 vim.g.mapleader = " "
 
+-- f-person/git-blame.nvim
+vim.g.gitblame_date_format = "%r"
+
 vim.opt.fillchars = {
   foldopen = "",
   foldclose = "",
