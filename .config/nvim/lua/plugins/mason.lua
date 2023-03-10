@@ -10,6 +10,7 @@ return {
         "vue-language-server",
         "css-lsp",
         "dockerfile-language-server",
+        "docker-compose-language-service",
         -- "emmet-lsp",
         "eslint-lsp",
         "gopls",
@@ -18,15 +19,22 @@ return {
         "tailwindcss-language-server",
         "yaml-language-server",
 
+        -- DAP
+        "go-debug-adapter",
+
         -- Linter
         "flake8",
         "shellcheck",
         "commitlint",
         "eslint_d",
+        "golangci-lint",
 
         -- Formatter
         "prettier",
         "goimports",
+        "gofumpt",
+        "goimports-reviser",
+        "golines",
         "rustfmt",
         "yamlfmt",
         "sql-formatter",

@@ -31,11 +31,21 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "go" },
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+--   pattern = { "go", "php" },
+--   callback = function()
+--     -- vim.cmd([[set tabstop=4 shiftwidth=4]])
+--     vim.opt_local.tabstop = 4
+--     vim.opt_local.shiftwidth = 4
+--     -- vim.cmd([[setlocal tabstop=4 shiftwidth=4]])
+--   end,
+-- })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.go", "*.php" },
   callback = function()
-    vim.cmd([[set tabstop=4 shiftwidth=4]])
-    -- vim.cmd([[setlocal tabstop=4 shiftwidth=4]])
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
   end,
 })
 
