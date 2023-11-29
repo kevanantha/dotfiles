@@ -1,10 +1,10 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+eval "$(starship init zsh)"
+
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/mekari/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,7 +72,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting yarn wd bundler npm rbenv redis-cli ruby tmux docker docker-compose kubectl web-search)
+plugins=(git wd zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,6 +90,11 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
+# export TERM="xterm-256color"
+# export TERM="alacritty"
+export EDITOR='nvim'
+export BAT_THEME="Catppuccin-mocha"
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -99,107 +104,29 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias hm="home-manager"
-alias pn="pnpm"
-alias ld="lazydocker"
-alias tks="tmux kill-session"
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias vimrc="nvim ~/.vimrc"
-alias vimconfig="cd ~/.config/nvim && nvim ~/.config/nvim"
+alias ls="eza --long --header --classify --git --color=always --icons"
 alias v="nvim"
-alias c='clear'
-alias gacp='echo "What is the commit message mate?" && read MSG && git add . && git commit -m "$MSG" && ggp'
-alias bitpr='echo "What branch?" && read MSG && open "https://bitbucket.org/mid-kelola-indonesia/talenta-core/pull-requests/new?source=$MSG&t=1" -a "Arc"'
-alias pobsi='wd obsi && git add . && git commit -m "docs: update" && ggp'
-# alias gac='echo "What is the commit message mate?" && read MSG && git add . && git commit -m "$MSG"'
-alias gac='gaa && gc'
-alias gglm='git pull origin master --rebase=false'
-alias gglmr='git pull origin master --rebase'
-# alias gwip='gaa && gc --no-verify'
-alias gaca='gaa && gc --amend'
-alias gwip='echo "What is the commit message mate?" && read MSG && git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "$MSG [skip ci]"'
-alias be='bundle exec'
-alias ber='bundle exec rspec'
-alias berof='bundle exec rspec --only-failures'
-alias b='bundle'
-alias be='bundle exec'
-alias rs='rails s'
-alias rc='rails c'
-alias rr='rails routes'
-alias rdm='rails db:migrate'
-alias rdms='rails db:migrate:status'
-alias rdmt='rails db:migrate RAILS_ENV=test'
-alias rdr='rails db:rollback'
-# alias rgm='rails g migration'
-# alias rg='rails g'
-alias d='docker'
-# alias k='kubectl'
-alias dc='docker-compose'
-alias ls='exa -l -h -F --git --color=always'
-alias cat='bat --theme=Dracula'
-# alias find='fd'
-alias top='ytop'
-# alias gd='git diff --color | delta | cat'
-# alias gm='open "https://meet.google.com/landing?authuser=1" -a "Google Chrome"'
-alias gmeet='open "https://meet.google.com/landing?authuser=1" -a "Arc"'
-alias sup='open "https://meet.google.com/tzr-broj-sjg?authuser=1&pli=1" -a "Arc"'
-alias supl='echo "Gimme the link mate!" && read MSG && open $MSG -a "Arc"'
-alias bsl='brew services list'
-alias bs='brew services'
-alias killport='echo "What port?" && read PORT && kill -9 $(lsof -ti tcp:$PORT) && echo "DONE BRO!"'
-alias tx='tmuxinator'
-alias sl='pmset sleepnow'
-alias ws='webstorm'
-
-export EDITOR='nvim'
-# export EDITOR='nvim'
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
-
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/Library/Application Support/neovim/bin:$PATH"
-
-eval "$(starship init zsh)"
-fpath+=${ZDOTDIR:-~}/.zsh_functions
-
-export PNPM_HOME="/Users/mekari/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# pnpm
-export PNPM_HOME="/Users/mekari/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-
-# 1Password
-eval "$(op completion zsh)"; compdef _op op
-
-# export VOLTA_HOME="$HOME/.volta"
-# export PATH="$VOLTA_HOME/bin:$PATH"
+alias c="clear"
+alias cat="bat"
 
 # fnm
-export PATH=/Users/mekari/.fnm:$PATH
+export PATH="/Users/kevan/Library/Application Support/fnm:$PATH"
 eval "`fnm env`"
-# fnm shell setup
-# https://github.com/Schniz/fnm#shell-setup
+
+# https://github.com/Schniz/fnm?tab=readme-ov-file#zsh
 eval "$(fnm env --use-on-cd)"
 
-# turbolift
-# export PATH=/Users/mekari/turbolift/turbolift:$PATH
-export PATH=/Users/mekari/turbolift:$PATH
+# Android
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-# Nix
-export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+# Java SDK
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-
-eval "$(direnv hook zsh)"
-
-export DENO_INSTALL="/Users/mekari/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+# opam configuration
+[[ ! -r /Users/kevan/.opam/opam-init/init.zsh ]] || source /Users/kevan/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
